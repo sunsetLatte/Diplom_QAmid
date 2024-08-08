@@ -29,6 +29,16 @@ public class BaseSteps {
         logOutButton.perform(click());
     }
 
+    public void logIn() {
+
+        try {
+            onView(isRoot()).perform(waitDisplayed(R.id.trademark_image_view, 20_000));
+        } catch (Exception e) {
+            authPage.authValidLoginAndPass(Helper.authInfo());
+            authPage.signIn();
+        }
+    }
+
     public void checkToast(int id, boolean visible) {
         if (visible) {
             helper.toast(id).check(matches(isDisplayed()));
