@@ -54,4 +54,20 @@ public class BaseSteps {
     public void checkEmptyAuthDataToast() {
         checkToast(R.string.empty_login_or_password, true);
     }
+
+    public void checkEmptyFields() {
+        checkToast(R.string.empty_fields, true);
+    }
+
+    public void checkWrongPeriod() {
+        checkToast(R.string.wrong_news_date_period, true);
+    }
+
+    public ViewInteraction nothingToShowWarning = onView(withText("There is nothing here yet…"));
+
+
+    public void  nothingToShowWarning() {
+        nothingToShowWarning.check(matches(isDisplayed()));
+        nothingToShowWarning.check(matches(withText("There is nothing here yet...")));
+    }
 }

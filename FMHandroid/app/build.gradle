@@ -108,4 +108,5 @@ dependencies {
     androidTestImplementation "androidx.test.uiautomator:uiautomator:$uiautomator_version"
     androidTestImplementation "org.hamcrest:hamcrest-integration:$hamcrest_version"
 
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
 }
