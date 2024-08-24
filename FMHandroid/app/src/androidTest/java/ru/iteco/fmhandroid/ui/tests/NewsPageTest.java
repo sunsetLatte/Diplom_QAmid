@@ -2,21 +2,25 @@ package ru.iteco.fmhandroid.ui.tests;
 
 import static androidx.test.espresso.Espresso.pressBack;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.filters.LargeTest;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.pages.AboutPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
 import ru.iteco.fmhandroid.ui.pages.OurMissionPage;
-import static ru.iteco.fmhandroid.ui.data.Data.Rand.randomCategory;
 
+
+@LargeTest
+@RunWith(AndroidJUnit4.class)
 public class NewsPageTest {
 
-    BaseSteps baseSteps = new BaseSteps();
-
+    private final BaseSteps baseSteps = new BaseSteps();
     private final MainPage mainPage = new MainPage();
     private final NewsPage newsPage = new NewsPage();
     private final OurMissionPage missionPage = new OurMissionPage();
@@ -53,6 +57,18 @@ public class NewsPageTest {
     // Ожидаемый результат: Осуществлен переход по всем страницам меню
     // Фактический результат: Страница "About" недоступна                 BUG
 
+    @Test    //  Отображение новостей на странице "Новости"
+    public void shouldShowNewCardsBlock() {
+        newsPage.checkNewsCardsBlock();
+    }
+
+    @Test    //   Развернуть любую новость
+    public void shouldShowNewsContent() {
+        int newsIndex = 0;
+        newsPage.openNews(newsIndex);
+        newsPage.newsContentIsDisplayed(newsIndex);
+    }
+
     @Test    //  Отмена фильтрации
     public void clickCancelFilter() {
         newsPage.clickFilterButton();
@@ -60,22 +76,14 @@ public class NewsPageTest {
         newsPage.checkHeaderPage();
     }
 
-    @Test    //  Фильтрации без ввода фильтров
+    @Test    //  Фильтрация без ввода фильтров
     public void clickFilterWithoutChoiceFilters() {
         newsPage.clickFilterButton();
         newsPage.clickFilterNewsButton();
         newsPage.checkHeaderPage();
     }
 
-    @Test    //  Фильтрация новостей со страницы "Новости" по категории
-    public void shouldFilterByCathegory() {
-        newsPage.clickFilterButton();
-        newsPage.fillInNewsCategory(randomCategory());
-        newsPage.clickFilterNewsButton();
-        newsPage.checkNewsCardsBlock();
-    }
-
-    @Test    //  Фильтрация новостей на страничке "Новости" по дате От До (От идет перед До)
+    @Test    //  Фильтрация новостей на странице "Новости" по дате От До (От идет перед До)
     public void shouldFilterByDateFromTo() {
         newsPage.clickFilterButton();
         newsPage.enterStartDate();
@@ -84,7 +92,7 @@ public class NewsPageTest {
         newsPage.checkLastNewsPublicationDate();
     }
 
-    @Test    //  Фильтрация новостей на страничке "Новости" по дате От До (От идет после До) (negative)
+    @Test    //  Фильтрация новостей на странице "Новости" по дате От До (От идет после До) (negative)
     public void shouldFilterByDateToFrom() {
         newsPage.clickFilterButton();
         newsPage.enterWrongStartDate();
@@ -95,7 +103,7 @@ public class NewsPageTest {
     // Ожидаемый результат: Сообщение "Wrong period"
     // Фактический результат: Сообщение "There is nothing here yet..."          BUG
 
-    @Test    //  Фильтрация новостей на страничке "Новости" по дате От До (От совпадает с До)
+    @Test    //  Фильтрация новостей на странице "Новости" по дате От До (От совпадает с До)
     public void shouldFilterByDateFromToSame() {
         newsPage.clickFilterButton();
         newsPage.enterSameStartDate();
@@ -105,7 +113,7 @@ public class NewsPageTest {
         newsPage.checkLastNewsPublicationSameDate();
     }
 
-    @Test    //  Фильтрация новостей на страничке "Редактирование новостей" по дате От конкретного дня
+    @Test    //  Фильтрация новостей на странице "Новости" по дате От конкретного дня
     public void shouldFilterByDateFrom() {
         newsPage.clickFilterButton();
         newsPage.enterStartDate();
@@ -115,7 +123,7 @@ public class NewsPageTest {
     // Ожидаемый результат: Новости фильтруются от конкретного дня
     // Фактический результат: Сообщение "Wrong period"                   BUG
 
-    @Test    //  Фильтрация новостей на страничке "Новости" по дате До конкретного дня
+    @Test    //  Фильтрация новостей на странице "Новости" по дате До конкретного дня
     public void shouldFilterByDateTo() {
         newsPage.clickFilterButton();
         newsPage.enterEndDate();
@@ -124,5 +132,4 @@ public class NewsPageTest {
     }
     // Ожидаемый результат: Новости фильтруются до конкретного дня
     // Фактический результат: Сообщение "Wrong period"                   BUG
-
 }

@@ -22,6 +22,7 @@ public class Data {
     public static final String XSS = "<script>alert(‘Hello’)</script>";
     public static final String SQL = "1’ or ‘1’ = ‘1";
 
+
     public static class Rand {
         static final Random rand = new Random();
         public static String randomCategory() {
@@ -39,10 +40,37 @@ public class Data {
         }
     }
 
-    public static final String from = "17.08.2024";
-    public static final String to = "18.08.2024";
+    public static final String from = "21.08.2024";
+    public static final String to = "22.08.2024";
 
-    public static final String fromFutureDay = "18.08.2025";
-    public static final String toFutureDay = "18.08.2025";
+    public static final String fromFutureDay = "20.08.2026";
+    public static final String toFutureDay = "18.12.2024";
 
+    public String getNameNews() {
+        return "Тестовое объявление...";
+    }
+
+    public String getDateCreateNews(int index) {
+        return dateCreateNews[index];
+    }
+
+    public String getDateCreateTodayNews(int index) {
+        return dateCreateTodayNews[index];
+    }
+
+    public String getDateCreateFutureNews(int index) {
+        return dateCreateFutureNews[index];
+    }
+
+    private final String[] dateCreateNews = {
+            "25.08.2024",
+    };
+
+    private final String[] dateCreateTodayNews = {
+            "24.08.2024",
+    };
+
+    private final String[] dateCreateFutureNews = {
+            "17.12.2025",
+    };
 }

@@ -1,10 +1,12 @@
 package ru.iteco.fmhandroid.ui.tests;
 import static androidx.test.espresso.Espresso.pressBack;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.pages.AboutPage;
@@ -14,7 +16,7 @@ import ru.iteco.fmhandroid.ui.pages.OurMissionPage;
 
 
 @LargeTest
-
+@RunWith(AndroidJUnit4.class)
 public class MainPageTest {
     BaseSteps baseSteps = new BaseSteps();
 
@@ -33,7 +35,7 @@ public class MainPageTest {
     }
 
     @Test    // Сворачивание/разворачивание новостей на главном экране
-    public void testDropDawnNewsBlock() {
+    public void dropDawnNewsBlock() {
         mainPage.checkNewsBlock();
         mainPage.clickExpandButton();
         mainPage.clickExpandButton();

@@ -2,9 +2,7 @@ package ru.iteco.fmhandroid.ui.data;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 import static ru.iteco.fmhandroid.ui.data.Data.SQL;
 import static ru.iteco.fmhandroid.ui.data.Data.XSS;
 import static ru.iteco.fmhandroid.ui.data.Data.emptyLogin;
@@ -21,16 +19,13 @@ import android.os.IBinder;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
-
 import androidx.test.espresso.Root;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
-
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-
 
 
 public class Helper {
