@@ -50,7 +50,7 @@ public class CreateEditNewsPageTest {
     public void navigatingPagesOfNewsMenu() {
 
         editNewsPage.goToMainPage();
-        newsPage.checkHeaderPage();
+        mainPage.checkHeaderPage();
         pressBack();
 
         editNewsPage.goToNewsPage();

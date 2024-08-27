@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.test.espresso.PerformException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.util.HumanReadables;
 import androidx.test.espresso.util.TreeIterables;
 import org.hamcrest.Matcher;
@@ -59,4 +60,14 @@ public class TestUtils {
             }
         };
     }
+
+    public static ViewAssertion isNotDisplayed() {
+        return (view, noView) -> {
+            if (view != null && isDisplayed().matches(view)) {
+                throw new AssertionError("View is present in the hierarchy and Displayed: "
+                        + HumanReadables.describe(view));
+            }
+        };
+    }
+
 }

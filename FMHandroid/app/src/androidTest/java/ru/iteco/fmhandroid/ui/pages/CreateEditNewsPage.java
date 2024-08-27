@@ -177,7 +177,7 @@ public class CreateEditNewsPage {
         titleField.check(matches(isDisplayed()));
         titleField.perform(replaceText(nameNews), closeSoftKeyboard());
         datePublishField.perform(replaceText(datePublish), closeSoftKeyboard());
-        timePublishField.perform(replaceText("20:25"), closeSoftKeyboard());
+        timePublishField.perform(replaceText("23:37"), closeSoftKeyboard());
         descriptionField.perform(replaceText(description), closeSoftKeyboard());
         saveButton.perform(scrollTo(), click());
     }

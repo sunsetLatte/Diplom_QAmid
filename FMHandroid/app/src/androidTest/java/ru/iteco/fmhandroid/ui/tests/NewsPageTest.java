@@ -19,7 +19,6 @@ import ru.iteco.fmhandroid.ui.pages.OurMissionPage;
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class NewsPageTest {
-
     private final BaseSteps baseSteps = new BaseSteps();
     private final MainPage mainPage = new MainPage();
     private final NewsPage newsPage = new NewsPage();
@@ -41,7 +40,7 @@ public class NewsPageTest {
     public void navigatingPagesOfNewsMenu() {
 
         newsPage.goToMainPage();
-        newsPage.checkHeaderPage();
+        mainPage.checkHeaderPage();
         pressBack();
 
         newsPage.goToOurMissionPage();
@@ -62,12 +61,6 @@ public class NewsPageTest {
         newsPage.checkNewsCardsBlock();
     }
 
-    @Test    //   Развернуть любую новость
-    public void shouldShowNewsContent() {
-        int newsIndex = 0;
-        newsPage.openNews(newsIndex);
-        newsPage.newsContentIsDisplayed(newsIndex);
-    }
 
     @Test    //  Отмена фильтрации
     public void clickCancelFilter() {

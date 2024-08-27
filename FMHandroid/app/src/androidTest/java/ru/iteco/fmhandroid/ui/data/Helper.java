@@ -142,4 +142,18 @@ public class Helper {
             return text[0];
         }
     }
+
+    private final String[] link = {
+            "https://vhospice.org/#/privacy-policy/",
+            "https://vhospice.org/#/terms-of-use"
+    };
+
+    public String getLinkContainingSubstring(String substring) {
+        for (String link : link) {
+            if (link.contains(substring)) {
+                return link;
+            }
+        }
+        return null;
+    }
 }

@@ -12,7 +12,9 @@ import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.pages.AuthorizationPage;
 import static org.hamcrest.core.IsNot.not;
 import static ru.iteco.fmhandroid.ui.common.TestUtils.waitDisplayed;
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.util.HumanReadables;
 
 public class BaseSteps {
 

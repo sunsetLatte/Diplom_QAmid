@@ -15,6 +15,12 @@ public class MainPage {
     public void waitUntilPageLoaded() {
         onView(isRoot()).perform(waitDisplayed(R.id.container_list_news_include_on_fragment_main, 10_000));
     }
+    private final ViewInteraction headerPage = onView(withText("News"));
+
+    public void checkHeaderPage() {
+        headerPage.check(matches(isDisplayed()));
+        headerPage.check(matches(withText("News")));
+    }
 
     private final ViewInteraction hamburgerMenuButton = onView(withId(R.id.main_menu_image_button));
     private final ViewInteraction ourMissionButton = onView(withId(R.id.our_mission_image_button));
