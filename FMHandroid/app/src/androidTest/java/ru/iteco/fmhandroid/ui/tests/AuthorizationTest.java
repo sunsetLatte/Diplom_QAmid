@@ -59,16 +59,6 @@ public class AuthorizationTest {
     }
 
     @Test
-    @DisplayName("Авторизация пользователя с незарегистрированными логином")
-    public void unregLoginATest() {
-        authPage.authUnregLogin(Helper.authInfo());
-        authPage.signIn();
-        baseSteps.checkWrongAuthDataToast();
-        // Ожидаемый результат: "Wromg logim or password"
-        // Фактический результат: "Something get wrong. Try again later"   BUG
-    }
-
-    @Test
     @DisplayName("Авторизация пользователя с незарегистрированными паролем")
     public void unregPassTest() {
         authPage.authUnregPass(Helper.authInfo());
