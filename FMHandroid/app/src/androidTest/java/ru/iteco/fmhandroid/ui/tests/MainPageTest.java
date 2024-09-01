@@ -13,10 +13,12 @@ import ru.iteco.fmhandroid.ui.pages.AboutPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
 import ru.iteco.fmhandroid.ui.pages.OurMissionPage;
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class MainPageTest {
     BaseSteps baseSteps = new BaseSteps();
 
@@ -34,7 +36,8 @@ public class MainPageTest {
         baseSteps.logIn();
     }
 
-    @Test    // Сворачивание/разворачивание новостей на главном экране
+    @Test
+    @DisplayName("Сворачивание/разворачивание новостей на главном экране")
     public void dropDawnNewsBlock() {
         mainPage.checkNewsBlock();
         mainPage.clickExpandButton();
@@ -42,14 +45,16 @@ public class MainPageTest {
         mainPage.checkNewsBlock();
     }
 
-    @Test    // Переход с Главной на экран с новостями через кнопку "Все новости"
+    @Test
+    @DisplayName("Переход с Главной на экран с новостями через кнопку \"Все новости\"")
     public void navigatingllNewsButton() {
         mainPage.clickAllNewsButton();
         newsPage.checkHeaderPage();
         pressBack();
     }
 
-    @Test    // Навигация из Главной страницы по разделам приложения
+    @Test
+    @DisplayName("Навигация из Главной страницы по разделам приложения")
     public void navigatingPagesOfMainMenu() {
 
         mainPage.goToNewsPage();

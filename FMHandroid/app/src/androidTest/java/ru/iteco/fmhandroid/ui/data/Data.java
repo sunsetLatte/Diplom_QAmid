@@ -40,8 +40,8 @@ public class Data {
         }
     }
 
-    public static final String from = "26.08.2024";
-    public static final String to = "27.08.2024";
+    public static final String from = "31.08.2024";
+    public static final String to = "01.09.2024";
 
     public static final String fromFutureDay = "20.08.2026";
     public static final String toFutureDay = "18.12.2024";
@@ -63,11 +63,11 @@ public class Data {
     }
 
     private final String[] dateCreateNews = {
-            "31.08.2024",
+            "01.09.2024",
     };
 
     private final String[] dateCreateTodayNews = {
-            "27.08.2024",
+            "01.09.2024",
     };
 
     private final String[] dateCreateFutureNews = {

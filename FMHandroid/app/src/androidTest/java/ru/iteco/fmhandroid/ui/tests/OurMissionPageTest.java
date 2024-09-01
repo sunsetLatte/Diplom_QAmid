@@ -16,10 +16,12 @@ import ru.iteco.fmhandroid.ui.pages.AboutPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
 import ru.iteco.fmhandroid.ui.pages.OurMissionPage;
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class OurMissionPageTest {
     private final BaseSteps baseSteps = new BaseSteps();
     private final MainPage mainPage = new MainPage();
@@ -39,8 +41,9 @@ public class OurMissionPageTest {
         mainPage.goToOurMissionPage();
     }
 
-    @Test    //     Навигация из страницы с цитатами по разделам приложения
-    public void navigatingPagesOfNewsMenu() {
+    @Test
+    @DisplayName("Навигация из страницы с цитатами по разделам приложения")
+    public void navigatingPagesOfMissionMenu() {
 
         missionPage.goToMainPage();
         mainPage.checkHeaderPage();
@@ -57,12 +60,14 @@ public class OurMissionPageTest {
         missionPage.logOut();
     }
 
-    @Test    //  Отображение цитат на странице с цитатами
+    @Test
+    @DisplayName("Отображение цитат на странице с цитатами")
     public void shouldShowQuotesCardsBlock() {
         missionPage.checkQuotesCardsBlock();
     }
 
-    @Test    //  Чтение цитаты на странице с цитатами
+    @Test
+    @DisplayName("Чтение цитаты на странице с цитатами")
     public void dropDownQuote() {
         int indexQuote = new Random().nextInt(data.lengthQuotes());
         missionPage.checkAvailQuote(indexQuote);

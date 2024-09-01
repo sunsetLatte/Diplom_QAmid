@@ -15,9 +15,12 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.common.BaseSteps;
 import ru.iteco.fmhandroid.ui.pages.AboutPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class AboutPageTest {
     private final BaseSteps baseSteps = new BaseSteps();
     private final MainPage mainPage = new MainPage();
@@ -34,7 +37,8 @@ public class AboutPageTest {
         mainPage.goToAboutPage();
     }
 
-    @Test    //  Переход на ссылки "Политика Конфединциальности" и "Пользовательское соглашение"
+    @Test
+    @DisplayName("Переход на ссылки \"Политика Конфиденциальности\" и \"Пользовательское соглашение\"")
     public void moveToPrivacyPolicyAndTerms() {
         Intents.init();
         aboutPage.goToPrivacyPolicy();

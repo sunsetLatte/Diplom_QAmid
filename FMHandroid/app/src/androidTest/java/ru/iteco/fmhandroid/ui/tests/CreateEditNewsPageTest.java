@@ -18,10 +18,12 @@ import ru.iteco.fmhandroid.ui.pages.CreateEditNewsPage;
 import ru.iteco.fmhandroid.ui.pages.MainPage;
 import ru.iteco.fmhandroid.ui.pages.NewsPage;
 import ru.iteco.fmhandroid.ui.pages.OurMissionPage;
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.junit4.DisplayName;
 
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(AllureAndroidJUnit4.class)
 public class CreateEditNewsPageTest {
     private final CreateEditNewsPage editNewsPage = new CreateEditNewsPage();
     private final BaseSteps baseSteps = new BaseSteps();
@@ -46,8 +48,9 @@ public class CreateEditNewsPageTest {
     int randomNumber = new Random().nextInt(100) + 1;
     String descriptionText = "news_" + randomNumber;
 
-    @Test    //     Навигация из страницы Редактирования новостей по разделам приложения
-    public void navigatingPagesOfNewsMenu() {
+    @Test
+    @DisplayName("Навигация из страницы Редактирования новостей по разделам приложения")
+    public void navigatingPagesOfEditNewsMenu() {
 
         editNewsPage.goToMainPage();
         mainPage.checkHeaderPage();
@@ -68,12 +71,14 @@ public class CreateEditNewsPageTest {
         editNewsPage.logOut();
     }
 
-    @Test    //  Отображение новостей на странице "Редактирование новостей"
+    @Test
+    @DisplayName("Отображение новостей на странице \"Редактирование новостей\"")
     public void shouldShowNewCardsBlock() {
         editNewsPage.checkNewsCardsBlock();
     }
 
-    @Test    //     Создание новости за сегодняшний денm
+    @Test
+    @DisplayName("Создание новости за сегодняшний денm")
     public void createTodayNews() {
         int index = 0;
         editNewsPage.createNews(data.getNameNews(), data.getDateCreateTodayNews(0), descriptionText);
@@ -81,7 +86,8 @@ public class CreateEditNewsPageTest {
         assertEquals(descriptionText, createdDescription);
     }
 
-    @Test    //     Создание новости датой будущего дня
+    @Test
+    @DisplayName("Создание новости датой будущего дня")
     public void createFutureDateNews() {
         int index = 0;
         editNewsPage.createNews(data.getNameNews(), data.getDateCreateFutureNews(0), descriptionText);
@@ -89,13 +95,15 @@ public class CreateEditNewsPageTest {
         assertEquals(descriptionText, createdDescription);
     }
 
-    @Test    //     Создание новости с пустыми полями
+    @Test
+    @DisplayName("Создание новости с пустыми полями")
     public void createEmptyNews() {
         editNewsPage.createEmptyNews();
         baseSteps.checkEmptyFields();
     }
 
-    @Test    //     Редактирование новости с изменением статуса — активная/неактивная
+    @Test
+    @DisplayName("Редактирование новости с изменением статуса — активная/неактивная")
     public void  editStatusNews() {
         int index = 0;
         editNewsPage.checkContainNewsByIndex(index, "ACTIVE");
@@ -104,21 +112,24 @@ public class CreateEditNewsPageTest {
         editNewsPage.editNewsByIndex(index);
     }
 
-    @Test    //  Отмена фильтрации
+    @Test
+    @DisplayName("Отмена фильтрации")
     public void clickCancelFilter() {
         editNewsPage.clickFilterButton();
         editNewsPage.clickCancelButton();
         editNewsPage.checkHeaderPage();
     }
 
-    @Test    //  Фильтрация без ввода фильтров
+    @Test
+    @DisplayName("Фильтрация без ввода фильтров")
     public void clickFilterWithoutChoiceFilters() {
         editNewsPage.clickFilterButton();
         editNewsPage.clickFilterNewsButton();
         editNewsPage.checkHeaderPage();
     }
 
-    @Test    //  Фильтрация новостей на странице "Редактирование новостей" по дате От До (От идет перед До)
+    @Test
+    @DisplayName("Фильтрация новостей на странице \"Редактирование новостей\" по дате От До (От идет перед До)")
     public void shouldFilterByDateFromTo() {
         editNewsPage.clickFilterButton();
         editNewsPage.enterStartDate();
@@ -127,7 +138,8 @@ public class CreateEditNewsPageTest {
         editNewsPage.checkLastNewsPublicationDate();
     }
 
-    @Test    //  Фильтрация новостей на странице "Редактирование новостей" по дате От До (От идет после До) (negative)
+    @Test
+    @DisplayName("Фильтрация новостей на странице \"Редактирование новостей\" по дате От До (От идет после До) (negative)")
     public void shouldFilterByDateToFrom() {
         editNewsPage.clickFilterButton();
         editNewsPage.enterWrongStartDate();
@@ -138,7 +150,8 @@ public class CreateEditNewsPageTest {
     // Ожидаемый результат: Сообщение "Wrong period"
     // Фактический результат: Сообщение "There is nothing here yet..."          BUG
 
-    @Test    //  Фильтрация новостей на странице "Редактирование новостей" по дате От До (От совпадает с До)
+    @Test
+    @DisplayName("Фильтрация новостей на странице \"Редактирование новостей\" по дате От До (От совпадает с До)")
     public void shouldFilterByDateFromToSame() {
         editNewsPage.clickFilterButton();
         editNewsPage.enterSameStartDate();
@@ -148,7 +161,8 @@ public class CreateEditNewsPageTest {
         editNewsPage.checkLastNewsPublicationSameDate();
     }
 
-    @Test    //  Фильтрация новостей на странице "Редактирование новостей" по дате От конкретного дня
+    @Test
+    @DisplayName("Фильтрация новостей на странице \"Редактирование новостей\" по дате От конкретного дня")
     public void shouldFilterByDateFrom() {
         editNewsPage.clickFilterButton();
         editNewsPage.enterStartDate();
@@ -158,7 +172,8 @@ public class CreateEditNewsPageTest {
     // Ожидаемый результат: Новости фильтруются от конкретного дня
     // Фактический результат: Сообщение "Wrong period"                   BUG
 
-    @Test    //  Фильтрация новостей на странице "Редактирование новостей" по дате До конкретного дня
+    @Test
+    @DisplayName("Фильтрация новостей на странице \"Редактирование новостей\" по дате До конкретного дня")
     public void shouldFilterByDateTo() {
         editNewsPage.clickFilterButton();
         editNewsPage.enterEndDate();
