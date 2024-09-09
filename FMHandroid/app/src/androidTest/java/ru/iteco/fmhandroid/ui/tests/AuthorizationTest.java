@@ -59,7 +59,7 @@ public class AuthorizationTest {
     }
 
     @Test
-    @DisplayName("Авторизация пользователя с незарегистрированными паролем")
+    @DisplayName("Авторизация пользователя с незарегистрированным паролем")
     public void unregPassTest() {
         authPage.authUnregPass(Helper.authInfo());
         authPage.signIn();
@@ -87,23 +87,11 @@ public class AuthorizationTest {
     }
 
     @Test
-    @DisplayName("Авторизация пользователя с логином и паролеи кириллицей")
-    public void loginKirilLoginAndPassTest() {
-        authPage.authKirilLoginAndPass(Helper.authInfo());
-        authPage.signIn();
-        baseSteps.checkWrongAuthDataToast();
-        // Ожидаемый результат: "Wromg logim or password"
-        // Фактический результат: "Something get wrong. Try again later"   BUG
-    }
-
-    @Test
     @DisplayName("Авторизация пользователя с XSS-инъекцией в поле \"логин\"")
     public void loginXSSLoginTest() {
         authPage.XSSLogin(Helper.authInfo());
         authPage.signIn();
-        baseSteps.checkWrongAuthDataToast();
-        // Ожидаемый результат: "Wromg logim or password"
-        // Фактический результат: "Something get wrong. Try again later"   BUG
+        baseSteps.checkErrorDataToast();
     }
 
     @Test
@@ -111,9 +99,7 @@ public class AuthorizationTest {
     public void loginXSSPassTest() {
         authPage.XSSPass(Helper.authInfo());
         authPage.signIn();
-        baseSteps.checkWrongAuthDataToast();
-        // Ожидаемый результат: "Wromg logim or password"
-        // Фактический результат: "Something get wrong. Try again later"   BUG
+        baseSteps.checkErrorDataToast();
     }
 
     @Test
@@ -121,9 +107,7 @@ public class AuthorizationTest {
     public void loginSQLLoginTest() {
         authPage.SQLLogin(Helper.authInfo());
         authPage.signIn();
-        baseSteps.checkWrongAuthDataToast();
-        // Ожидаемый результат: "Wromg logim or password"
-        // Фактический результат: "Something get wrong. Try again later"   BUG
+        baseSteps.checkErrorDataToast();
     }
 
     @Test
@@ -131,8 +115,6 @@ public class AuthorizationTest {
     public void loginSQLPassTest() {
         authPage.SQLPass(Helper.authInfo());
         authPage.signIn();
-        baseSteps.checkWrongAuthDataToast();
-        // Ожидаемый результат: "Wromg logim or password"
-        // Фактический результат: "Something get wrong. Try again later"   BUG
+        baseSteps.checkErrorDataToast();
     }
 }

@@ -98,7 +98,7 @@ public class AuthorizationPage {
 
     public void XSSPass(Helper.User info) {
         loginInputText.perform(replaceText(info.getLogin()));
-        loginInputText.perform(replaceText(XSSAuthData().getLogin()));
+        passwordInputText.perform(replaceText(XSSAuthData().getPassword()));
     }
 
     public void SQLLogin(Helper.User info) {
@@ -108,6 +108,6 @@ public class AuthorizationPage {
 
     public void SQLPass(Helper.User info) {
         loginInputText.perform(replaceText(info.getLogin()));
-        loginInputText.perform(replaceText(SQLAuthData().getLogin()));
+        passwordInputText.perform(replaceText(SQLAuthData().getPassword()));
     }
 }

@@ -53,6 +53,10 @@ public class BaseSteps {
         checkToast(R.string.wrong_login_or_password, true);
     }
 
+   public void checkErrorDataToast() {
+    checkToast(R.string.error, true);
+}
+
     public void checkEmptyAuthDataToast() {
         checkToast(R.string.empty_login_or_password, true);
     }
